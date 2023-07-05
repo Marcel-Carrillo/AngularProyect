@@ -18,14 +18,14 @@ export class AdivinaComponent implements OnInit {
    *
    * Por cada intento, si falla, le debemos dar una pista y decirle si el numero introducido es menor o mayor que el buscado
    *
-   * Si hacierta le damos la enhorabuena
+   * Si acierta le damos la enhorabuena
    *
    * Si supero los 5 intentos pues le decimos que ha perdido y la solucion
    */
 
   constructor() {
     console.log('Estoy en el constructor');
-    this.titulo = 'ADIVINA UN NÚMERO EN 5 INTENTOS';
+    this.titulo = 'ADIVINA UN NÚMERO DEL 1 AL 100 EN 5 INTENTOS';
     this.numeroUsuario = 0;
     //TODO: Calcular el numero a adivinar
     this.numeroBuscado = this.calcularNumeroAleatorioDe1a100();
@@ -49,9 +49,9 @@ export class AdivinaComponent implements OnInit {
   comprobarIntento() {
     console.log('comprobando intento');
     console.log(this.numeroUsuario);
-    if(this.numeroBuscado != this.numeroUsuario){
+    if(this.numeroBuscado != this.numeroUsuario && this.numeroBuscado < this.numeroUsuario){
       this.contador--
-      window.alert("Te quedan " + this.contador + " intentos");
+      window.alert("Te quedan " + this.contador + " intentos y el numero es Menor Pajaro");
       if(this.contador < 1){
         window.alert("Has perdido");
         this.contador = 5;
@@ -64,8 +64,15 @@ export class AdivinaComponent implements OnInit {
       this.contador = 5;
       window.alert("Vuelve a jugar")
       location.reload();
+    }else if(this.numeroBuscado != this.numeroUsuario && this.numeroBuscado > this.numeroUsuario){
+      this.contador--
+      window.alert("Te quedan " + this.contador + " intentos y el numero es Mayor Pajaro");
+      if(this.contador < 1){
+        window.alert("Has perdido");
+        this.contador = 5;
+        window.alert("Vuelve a jugar");
+        location.reload();
+      }
     }
-    }
-
   }
-
+}
