@@ -54,12 +54,18 @@ export class AdivinaComponent implements OnInit {
       window.alert("Te quedan " + this.contador + " intentos");
       if(this.contador < 1){
         window.alert("Has perdido");
+        this.contador = 5;
+        window.alert("Vuelve a jugar");
+        location.reload();
       }
-    }
-    if(this.numeroBuscado == this.numeroUsuario){
+    }else if(this.numeroBuscado == this.numeroUsuario){
       console.log("Lo has encontrado pajaro!!!!");
       window.alert("Has ganado pajaro");
-      
+      this.contador = 5;
+      window.alert("Vuelve a jugar")
+      location.reload();
     }
+    }
+
   }
-}
+
