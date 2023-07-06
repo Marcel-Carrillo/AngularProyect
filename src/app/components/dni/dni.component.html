@@ -1,38 +1,64 @@
 <div class="form-check">
-    <input class="form-check-input" value="sin" type="radio" name="prefijo" id="sin" checked>
-    <label class="form-check-label" for="sin">
-      Sin letra (dni español)
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" value="0" type="radio" name="prefijo" id="x" >
-    <label class="form-check-label" for="x">
-      X
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" value="1" type="radio" name="prefijo" id="y" >
-    <label class="form-check-label" for="y">
-      Y
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" value="2" type="radio" name="prefijo" id="z" >
-    <label class="form-check-label" for="z">
-      Z
-    </label>
-  </div>
+  <input
+    class="form-check-input"
+    value="sin"
+    type="radio"
+    name="prefijo"
+    id="sin"
+    checked
+  />
+  <label class="form-check-label" for="sin"> Sin letra (dni español) </label>
+</div>
+<div class="form-check">
+  <input
+    class="form-check-input"
+    value="0"
+    type="radio"
+    name="prefijo"
+    id="x"
+  />
+  <label class="form-check-label" for="x"> X </label>
+</div>
+<div class="form-check">
+  <input
+    class="form-check-input"
+    value="1"
+    type="radio"
+    name="prefijo"
+    id="y"
+  />
+  <label class="form-check-label" for="y"> Y </label>
+</div>
+<div class="form-check">
+  <input
+    class="form-check-input"
+    value="2"
+    type="radio"
+    name="prefijo"
+    id="z"
+  />
+  <label class="form-check-label" for="z"> Z </label>
+</div>
 
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">DNI</span>
-    <input type="text" [(ngModel)]="numDni" name="introduceDni" class="form-control" placeholder="Meta su dni" aria-label="Username" aria-describedby="basic-addon1" >
-  </div>
-  <div>
-    <span>La letra de tu DNI es </span>
-    <span>{{letraDni}}</span>
-    <br>
-    <br>
-  </div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">DNI</span>
+  <input
+    type="text"
+    [(ngModel)]="numDni"
+    name="introduceDni"
+    class="form-control"
+    placeholder="Meta su dni"
+    aria-label="Username"
+    aria-describedby="basic-addon1"
+  />
+</div>
+<div>
+  <span>La letra de tu DNI es </span>
+  <span>{{ letraDni }}</span>
+  <br />
+  <br />
+</div>
 
-  <button  class="btn btn-primary" (click)="calculoLetraDni()">Calcular Letra</button>
-  
+<button class="btn btn-primary" (click)="calculoLetraDni()">
+  Calcular Letra
+</button>
