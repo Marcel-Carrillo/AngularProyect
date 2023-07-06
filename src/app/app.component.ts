@@ -9,7 +9,6 @@ export class AppComponent {
   title = 'my-app'; 
   //aqui va el javascript - la funcionalidad del componente
   constructor(){
-    console.log("hola estoy en el constructor del appcomponent");
-    
+       
   }
 }
