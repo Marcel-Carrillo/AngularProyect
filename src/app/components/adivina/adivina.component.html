@@ -1,8 +1,9 @@
-{{titulo}}
+{{ titulo }}
 
 <div class="form-group">
-    <br>
-    <label for="idnum" class="m-2">Numero</label>
-    <input type="number" id="idnum" class="m-2" [(ngModel)]="numeroUsuario">
-    <button class="btn btn-primary" (click)="comprobarIntento()">Probar</button>
+  <br />
+  <label for="idnum" class="m-2">Numero</label>
+  <input type="number" id="idnum" class="m-2" [(ngModel)]="numeroUsuario" />
+  <button class="btn btn-primary" (click)="comprobarIntento()">Probar</button>
+  <button *ngIf="finDePartida" class="btn btn-warning my-5 m-2" (click)="reset()">Volver a jugar</button>
 </div>

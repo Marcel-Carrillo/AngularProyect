@@ -10,6 +10,8 @@ export class AdivinaComponent implements OnInit {
   numeroUsuario: number;
   numeroBuscado: number;
   contador: number;
+  finDePartida: boolean;
+  
 
   /**
    * Haced una app donde el programa piense un numero del 1 al 100
@@ -29,9 +31,9 @@ export class AdivinaComponent implements OnInit {
     this.numeroUsuario = 0;
     //TODO: Calcular el numero a adivinar
     this.numeroBuscado = this.calcularNumeroAleatorioDe1a100();
-    console.log("Numero a adivinar " + this.numeroBuscado);
+    console.log('Numero a adivinar ' + this.numeroBuscado);
     this.contador = 5;
-    
+    this.finDePartida = false;
   }
   ngOnInit(): void {
     //throw new Error('Method not implemented.');
@@ -41,7 +43,7 @@ export class AdivinaComponent implements OnInit {
   calcularNumeroAleatorioDe1a100(): number {
     let numeroGenerado: number = 0;
 
-    numeroGenerado = Math.floor(Math.random() * (100) + 1);
+    numeroGenerado = Math.floor(Math.random() * 100 + 1);
 
     return numeroGenerado;
   }
@@ -49,30 +51,35 @@ export class AdivinaComponent implements OnInit {
   comprobarIntento() {
     console.log('comprobando intento');
     console.log(this.numeroUsuario);
-    if(this.numeroBuscado != this.numeroUsuario && this.numeroBuscado < this.numeroUsuario){
-      this.contador--
-      window.alert("Te quedan " + this.contador + " intentos y el numero es Menor Pajaro");
-      if(this.contador < 1){
-        window.alert("Has perdido");
-        this.contador = 5;
-        window.alert("Vuelve a jugar");
-        location.reload();
-      }
-    }else if(this.numeroBuscado == this.numeroUsuario){
-      console.log("Lo has encontrado pajaro!!!!");
-      window.alert("Has ganado pajaro");
+    if (this.numeroBuscado < this.numeroUsuario) {
+      this.contador--;
+      window.alert(
+        'Te quedan ' + this.contador + ' intentos y el numero es Menor Pájaro'
+      );
+    } else if (this.numeroBuscado > this.numeroUsuario) {
+      this.contador--;
+      window.alert(
+        'Te quedan ' + this.contador + ' intentos y el numero es Mayor Pájaro'
+      );
+    } else if (this.numeroBuscado == this.numeroUsuario) {
+      console.log('Lo has encontrado pájaro!!!!');
+      window.alert("Has ganado enhorabuena!!");
       this.contador = 5;
-      window.alert("Vuelve a jugar")
-      location.reload();
-    }else if(this.numeroBuscado != this.numeroUsuario && this.numeroBuscado > this.numeroUsuario){
-      this.contador--
-      window.alert("Te quedan " + this.contador + " intentos y el numero es Mayor Pajaro");
-      if(this.contador < 1){
-        window.alert("Has perdido");
-        this.contador = 5;
-        window.alert("Vuelve a jugar");
-        location.reload();
-      }
+      window.alert('Vuelve a jugar');
+      this.finDePartida = true;
+      // location.reload();
     }
+    if (this.contador < 1) {
+      window.alert('Has perdido el numero era ' + this.numeroBuscado);
+      this.contador = 5;
+      window.alert('Vuelve a jugar');
+      this.finDePartida = true;
+      // location.reload();
+    }
+  }
+
+  reset(){
+    this.contador = 5;
+    location.reload();
   }
 }
