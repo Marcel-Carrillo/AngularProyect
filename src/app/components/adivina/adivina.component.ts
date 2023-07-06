@@ -1,5 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Haced una app donde el programa piense un numero del 1 al 100
+ *
+ * El usuario tendra 5 intentos para averiguar el numero pensado por la maquina
+ *
+ * Por cada intento, si falla, le debemos dar una pista y decirle si el numero introducido es menor o mayor que el buscado
+ *
+ * Si acierta le damos la enhorabuena
+ *
+ * Si supero los 5 intentos pues le decimos que ha perdido y la solucion
+ */
+
 @Component({
   selector: 'app-adivina',
   templateUrl: './adivina.component.html',
@@ -11,19 +23,6 @@ export class AdivinaComponent implements OnInit {
   numeroBuscado: number;
   contador: number;
   finDePartida: boolean;
-  
-
-  /**
-   * Haced una app donde el programa piense un numero del 1 al 100
-   *
-   * El usuario tendra 5 intentos para averiguar el numero pensado por la maquina
-   *
-   * Por cada intento, si falla, le debemos dar una pista y decirle si el numero introducido es menor o mayor que el buscado
-   *
-   * Si acierta le damos la enhorabuena
-   *
-   * Si supero los 5 intentos pues le decimos que ha perdido y la solucion
-   */
 
   constructor() {
     console.log('Estoy en el constructor');
@@ -63,7 +62,7 @@ export class AdivinaComponent implements OnInit {
       );
     } else if (this.numeroBuscado == this.numeroUsuario) {
       console.log('Lo has encontrado pájaro!!!!');
-      window.alert("Has ganado enhorabuena!!");
+      window.alert('Has ganado enhorabuena!!');
       this.contador = 5;
       window.alert('Vuelve a jugar');
       this.finDePartida = true;
@@ -78,7 +77,7 @@ export class AdivinaComponent implements OnInit {
     }
   }
 
-  reset(){
+  reset() {
     this.contador = 5;
     location.reload();
   }
