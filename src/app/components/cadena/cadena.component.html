@@ -1,0 +1,37 @@
+<div class="divPalabras alert alert-primary" role="alert">
+  <h1>Crea tu cadena introduciendo palabras</h1>
+  <input
+    class="m-2"
+    type="text"
+    name="cadena"
+    id="cad"
+    [(ngModel)]="introducePalabra"
+    placeholder="Introduce tus palabras"
+  />
+  <button (click)="introduceACadena()" class="boton btn btn-primary m-2">
+    Añadir a cadena
+  </button>
+  <button (click)="darLaVuelta()" class="boton btn btn-primary">
+    Dar la vuelta
+  </button>
+  <br />
+  <br />
+  <br />
+  <span *ngIf="cadena != ''">Esta es tu cadena {{ cadena }}</span>
+  <span></span>
+  <br />
+  <span *ngIf="cadenaAlreves != ''"
+    >Esta es tu cadena al revés {{ cadenaAlreves }}</span
+  >
+  <span></span>
+  <br />
+  <span
+    >Tu cadena tiene {{ cantidadPalabras }} palabras y {{ esParOImpar }}</span
+  >
+  <br />
+  <br />
+  <br />
+  <button (click)="resetea()" class="boton btn btn-primary">
+    Resetear Cadena
+  </button>
+</div>

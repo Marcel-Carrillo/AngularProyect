@@ -8,6 +8,7 @@ import { DniComponent } from './components/dni/dni.component';
 import { PerroComponent } from './components/perro/perro.component';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { CadenaComponent } from './components/cadena/cadena.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
     AdivinaComponent,
     DniComponent,
     PerroComponent,
+    CadenaComponent,
   ],
   imports: [
     BrowserModule,
