@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Dni } from 'src/app/models/dni';
 
 @Component({
   selector: 'app-dni',
@@ -8,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class DniComponent implements OnInit {
   numDni: number;
   letraDni: String;
+  listaDnis: Array<Dni>; //esta lista almacena los dnis introducidos
+  listaDnisExtranjero: Array<Dni>;
 
   constructor() {
     this.numDni = 0;
     this.letraDni = '';
+    this.listaDnis = new Array<Dni>();
+    this.listaDnisExtranjero = new Array<Dni>();
   }
 
   //readonly porque es una constante
@@ -34,6 +39,7 @@ export class DniComponent implements OnInit {
   }
 
   calculoLetraDni() {
+    let dni: Dni = new Dni();
     let restoE = 0;
     let dniConPre = '';
     let valor = 0;
@@ -59,5 +65,49 @@ export class DniComponent implements OnInit {
       let resto = this.numDni % 23;
       this.letraDni = DniComponent.SECUENCIA_LETRAS_DNI.charAt(resto);
     }
+
+    
+    if(letraExtrangera.id != "sin"){
+    dni.numero = this.numDni;
+    dni.letra = this.letraDni.toString();
+    dni.numero = this.numDni;
+    dni.prefijo = letraExtrangera.id;
+    this.listaDnis.push(dni);
+    }else{
+    dni.numero = this.numDni;
+    dni.letra = this.letraDni.toString();
+    this.listaDnis.push(dni);
+    }
+    this.mostrarListaDnis();
+  }
+
+  mostrarListaDnis(): void {
+    console.log('Mostrando lista DNIS');
+    this.listaDnis.forEach((d) => {
+      if (d.prefijo != 'sin') {
+        console.log(`Dni = ${d.prefijo}${d.numero}-${d.letra} `);
+      } else {
+        console.log(`Dni = ${d.numero}-${d.letra} `);
+      }
+    });
+
+    console.log('Mostrando lista DNIs extranjeros');
+    this.listaDnisExtranjero = this.listaDnis.filter((d) => d.prefijo != 'sin');
+    console.log(this.listaDnisExtranjero);
+  }
+
+  obtenerSoloExtrangeros(): Array<Dni> {
+    let listaEx = new Array<Dni>();
+    listaEx = this.listaDnis.filter((d) => d.prefijo != 'sin');
+    return listaEx;
+  }
+
+  //TODO: add boton para ordenar por letra
+  //TODO: haced un componente con el ejercicio de IMC peso y altura
+  
+
+  ordenarPorNumero(): void {
+    //ordenar los Dnis por número
+    this.listaDnis.sort((a, b) => a.numero - b.numero);
   }
 }

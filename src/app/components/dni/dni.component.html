@@ -62,3 +62,27 @@
 <button class="btn btn-primary" (click)="calculoLetraDni()">
   Calcular Letra
 </button>
+<br>
+<br>
+<br>
+<table class="table" *ngIf="listaDnis.length > 0">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">PREFIJO</th>
+      <th scope="col">NUMERO</th>
+      <th scope="col">LETRA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dniaux of listaDnis">
+      <td>{{dniaux.prefijo}}</td>
+      <td>{{dniaux.numero}}</td>
+      <td>{{dniaux.letra}}</td>
+    </tr>
+    <!--aquí tengo que mostrar mi lista d dnis :)-->
+  </tbody>
+  <button class="btn btn-primary" (click)="ordenarPorNumero()">
+    Ordenar por número
+  </button>
+</table>
+
