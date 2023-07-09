@@ -66,17 +66,16 @@ export class DniComponent implements OnInit {
       this.letraDni = DniComponent.SECUENCIA_LETRAS_DNI.charAt(resto);
     }
 
-    
-    if(letraExtrangera.id != "sin"){
-    dni.numero = this.numDni;
-    dni.letra = this.letraDni.toString();
-    dni.numero = this.numDni;
-    dni.prefijo = letraExtrangera.id;
-    this.listaDnis.push(dni);
-    }else{
-    dni.numero = this.numDni;
-    dni.letra = this.letraDni.toString();
-    this.listaDnis.push(dni);
+    if (letraExtrangera.id != 'sin') {
+      dni.numero = this.numDni;
+      dni.letra = this.letraDni.toString();
+      dni.numero = this.numDni;
+      dni.prefijo = letraExtrangera.id;
+      this.listaDnis.push(dni);
+    } else {
+      dni.numero = this.numDni;
+      dni.letra = this.letraDni.toString();
+      this.listaDnis.push(dni);
     }
     this.mostrarListaDnis();
   }
@@ -104,10 +103,23 @@ export class DniComponent implements OnInit {
 
   //TODO: add boton para ordenar por letra
   //TODO: haced un componente con el ejercicio de IMC peso y altura
-  
 
   ordenarPorNumero(): void {
     //ordenar los Dnis por número
     this.listaDnis.sort((a, b) => a.numero - b.numero);
+  }
+
+  ordenarPorLetra(): void {
+    this.listaDnis.sort((a, b) => {
+      let letra1 = a.letra.toLocaleUpperCase();
+      let letra2 = b.letra.toLocaleUpperCase();
+      if (letra1 < letra2) {
+        return -1;
+      }
+      if (letra1 > letra2) {
+        return 1;
+      }
+      return 0;
+    });
   }
 }
