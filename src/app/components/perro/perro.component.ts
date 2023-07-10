@@ -9,21 +9,22 @@ import { PerroService } from 'src/app/services/perro.service';
   styleUrls: ['./perro.component.css'],
 })
 export class PerroComponent implements OnInit {
+  rutaFoto!: string;
+  raza!:string;
 
-
-  rutaFoto!:string;
-
-  observerPerros:Observer<PerroWeb> = {
-    next: (perroRx:PerroWeb) => {
+  observerPerros: Observer<PerroWeb> = {
+    next: (perroRx: PerroWeb) => {
       console.log('Perro recibido bien');
       console.log(perroRx.message);
       console.log(perroRx.status);
       this.rutaFoto = perroRx.message;
+      let palabra:Array<string> =  perroRx.message.split("/");
+      console.log("La raza es " + palabra[4]);
+      this.raza = palabra[4];
     },
-    error: fallo => console.error('Fallo al recibid el peroo: ' + fallo),
-    complete: () => console.log('Comunicacion completada')
+    error: (fallo) => console.error('Fallo al recibid el peroo: ' + fallo),
+    complete: () => console.log('Comunicacion completada'),
   };
-
 
   constructor(private perroService: PerroService) {
     console.log('Estamos cargando el componente');
@@ -34,10 +35,14 @@ export class PerroComponent implements OnInit {
     console.log('Vamos a traernos un perro del servidor');
     //cuando me suscribo al observer, le estoy diciendo, cuando vuelvas me avisas aqui
     this.perroService.getPerroAleatorio().subscribe(this.observerPerros);
-    console.log("Perro solicitado... ");
-    }
+    console.log('Perro solicitado... ');
+  }
 
-    getPerroAleatorio(){
-      this.perroService.getPerroAleatorio().subscribe(this.observerPerros);
-    }
+  getPerroAleatorio() {
+    this.perroService.getPerroAleatorio().subscribe(this.observerPerros);
+  }
+
+  obtenerRaza(){
+    
+  }
 }

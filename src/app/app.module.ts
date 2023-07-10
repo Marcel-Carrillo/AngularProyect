@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { CadenaComponent } from './components/cadena/cadena.component';
 import { ImcComponent } from './components/imc/imc.component';
+import { ChuckNorrisComponent } from './components/chuck-norris/chuck-norris.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ImcComponent } from './components/imc/imc.component';
     DniComponent,
     PerroComponent,
     CadenaComponent,
-    ImcComponent
+    ImcComponent,
+    ChuckNorrisComponent
   ],
   imports: [
     BrowserModule,
