@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { CdTimerComponent, TimeInterface } from 'angular-cd-timer';
 
 /**
  * Haced una app donde el programa piense un numero del 1 al 100
@@ -17,12 +18,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './adivina.component.html',
   styleUrls: ['./adivina.component.css'],
 })
-export class AdivinaComponent implements OnInit {
+export class AdivinaComponent implements OnInit, AfterViewInit{
   titulo: String;
   numeroUsuario: number;
   numeroBuscado: number;
   contador: number;
   finDePartida: boolean;
+
+  @ViewChild('basicTimer') contadorT!:CdTimerComponent;
 
   constructor() {
     console.log('Estoy en el constructor');
@@ -33,6 +36,10 @@ export class AdivinaComponent implements OnInit {
     console.log('Numero a adivinar ' + this.numeroBuscado);
     this.contador = 5;
     this.finDePartida = false;
+  }
+  ngAfterViewInit(): void {
+    console.log("Este metodo invoca cuando ya se ha procesado el html asociado");
+    this.contadorT.stop();  
   }
   ngOnInit(): void {
     //throw new Error('Method not implemented.');
@@ -74,6 +81,11 @@ export class AdivinaComponent implements OnInit {
       window.alert('Vuelve a jugar');
       this.finDePartida = true;
       // location.reload();
+    }
+    if(this.finDePartida){
+      this.contadorT.stop();
+      let ti:TimeInterface = this.contadorT.get();
+      console.log("Has tardado " + ti.minutes + " " + ti.seconds);
     }
   }
 

@@ -20,5 +20,5 @@ export class PerroService {
   getPerroAleatorio(): Observable<PerroWeb> {
     //Entre <comillas> indico el tipo de dato recibido en el cuerpo del mensaje en JSON
     return this.httpClient.get<PerroWeb>(PerroService.URL_API_PERROS);
-  }
-}
+  };
+};

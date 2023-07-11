@@ -11,6 +11,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { CadenaComponent } from './components/cadena/cadena.component';
 import { ImcComponent } from './components/imc/imc.component';
 import { ChuckNorrisComponent } from './components/chuck-norris/chuck-norris.component';
+import { CdTimerModule } from 'angular-cd-timer';
+import { RestaurantesComponent } from './components/restaurantes/restaurantes.component';
 
 
 @NgModule({
@@ -21,13 +23,15 @@ import { ChuckNorrisComponent } from './components/chuck-norris/chuck-norris.com
     PerroComponent,
     CadenaComponent,
     ImcComponent,
-    ChuckNorrisComponent
+    ChuckNorrisComponent,
+    RestaurantesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CdTimerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
