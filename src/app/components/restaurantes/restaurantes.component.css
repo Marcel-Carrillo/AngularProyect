@@ -1,0 +1,16 @@
+.ordenarCards{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.card{
+    text-align: center;
+    width: 250px;
+    height: 220px;
+    margin: 20px;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

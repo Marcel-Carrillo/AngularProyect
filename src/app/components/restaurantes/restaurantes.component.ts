@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Restaurante } from 'src/app/models/restaurante';
 import { RestauranteService } from 'src/app/services/restaurante.service';
+import { ModalComponent } from '../modal/modal.component';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @Component({
   selector: 'app-restaurantes',
@@ -8,9 +10,16 @@ import { RestauranteService } from 'src/app/services/restaurante.service';
   styleUrls: ['./restaurantes.component.css'],
 })
 export class RestaurantesComponent implements OnInit {
-  listaRestaurantes!: Array<Restaurante>;
+  listaRestaurantes: Array<Restaurante>;
+  modalRef: MdbModalRef<ModalComponent> | null = null;
+  restauranteSeleccionado!: Restaurante;
+  
+  
+  constructor(private restauranteService: RestauranteService,private modalService: MdbModalService) {
+    this.listaRestaurantes = [];
+  }
 
-  constructor(private restauranteService: RestauranteService) {}
+  @ViewChild(ModalComponent) modal!: ModalComponent;
 
   ngOnInit(): void {
     this.restauranteService.getListaRestaurantes().subscribe({
@@ -42,5 +51,12 @@ export class RestaurantesComponent implements OnInit {
         this.listaRestaurantes = listaRestaurantesRx;
       },
     });
+  }
+  
+  openModal(restaurante: Restaurante) {
+    this.restauranteSeleccionado = restaurante;
+    this.modalRef = this.modalService.open(ModalComponent)
+    this.modalRef.component.restaurante = restaurante;
+    console.log(this.listaRestaurantes,);
   }
 }

@@ -28,9 +28,9 @@ export class Restaurante {
     longitud:number;
     precioMedio:number;
     creadoEn:string;
-    especialidad1:string;
-    especialidad2:string;
-    especialidad3:string;
+    especialiadad1:string;
+    especialiadad2:string;
+    especialiadad3:string;
 
 
     constructor(){
@@ -44,8 +44,8 @@ export class Restaurante {
         this.longitud = 0;
         this.precioMedio = 0;
         this.creadoEn = "";
-        this.especialidad1 = "";
-        this.especialidad2 = "";
-        this.especialidad3 = "";
+        this.especialiadad1 = "";
+        this.especialiadad2 = "";
+        this.especialiadad3 = "";
     }
 }

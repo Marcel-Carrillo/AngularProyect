@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">{{restaurante.nombre}}</h5>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="modalRef.close()"
+  ></button>
+</div>
+<div class="modal-body">
+<p>Direccion: {{restaurante.direccion}}</p>
+<p>Barrio: {{restaurante.barrio}}</p>
+<p>Web: {{restaurante.web}}</p>
+<p>Ficha de Google: {{restaurante.fichaGoogle}}</p>
+<p>Latitud: {{restaurante.latitud}}</p>
+<p>Longitud: {{restaurante.longitud}}</p>
+<p>Precio medio: {{restaurante.precioMedio}}</p>
+<p>Especialidades: {{restaurante.especialiadad1}},{{restaurante.especialiadad2}},{{restaurante.especialiadad3}}</p>
+</div>
+<div class="modal-footer">
+</div>
