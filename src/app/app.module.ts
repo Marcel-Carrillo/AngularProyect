@@ -15,6 +15,7 @@ import { RestaurantesComponent } from './components/restaurantes/restaurantes.co
 import { ModalComponent } from './components/modal/modal.component';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import { FormularioRestauranteComponent } from './components/formulario-restaurante/formulario-restaurante.component';
 
 
 
@@ -28,7 +29,8 @@ import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
     ImcComponent,
     ChuckNorrisComponent,
     RestaurantesComponent,
-    ModalComponent
+    ModalComponent,
+    FormularioRestauranteComponent
       ],
   imports: [
     BrowserModule,

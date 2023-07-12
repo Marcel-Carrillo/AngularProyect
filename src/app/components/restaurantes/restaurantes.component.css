@@ -5,12 +5,16 @@
 }
 .card{
     text-align: center;
-    width: 250px;
-    height: 220px;
+    width: 350px;
+    height: 450px;
     margin: 20px;
 }
 .card-body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+.imagen{
+    height: auto;
+    width: auto;
 }

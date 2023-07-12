@@ -6,15 +6,11 @@ import { Restaurante } from 'src/app/models/restaurante';
   selector: 'app-modal',
   templateUrl: './modal.component.html',
 })
-export class ModalComponent implements OnInit{
-
-  @Input() restaurante!: Restaurante; 
-  
+export class ModalComponent implements OnInit {
+  @Input() restaurante!: Restaurante;
 
   constructor(public modalRef: MdbModalRef<ModalComponent>) {}
   ngOnInit(): void {
-    
-    
+    console.log(this.restaurante);
   }
 }
-  

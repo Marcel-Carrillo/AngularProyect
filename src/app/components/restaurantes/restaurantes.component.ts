@@ -13,9 +13,11 @@ export class RestaurantesComponent implements OnInit {
   listaRestaurantes: Array<Restaurante>;
   modalRef: MdbModalRef<ModalComponent> | null = null;
   restauranteSeleccionado!: Restaurante;
-  
-  
-  constructor(private restauranteService: RestauranteService,private modalService: MdbModalService) {
+
+  constructor(
+    private restauranteService: RestauranteService,
+    private modalService: MdbModalService
+  ) {
     this.listaRestaurantes = [];
   }
 
@@ -52,11 +54,25 @@ export class RestaurantesComponent implements OnInit {
       },
     });
   }
-  
-  openModal(restaurante: Restaurante) {
+
+    openModal(restaurante: Restaurante) {
     this.restauranteSeleccionado = restaurante;
-    this.modalRef = this.modalService.open(ModalComponent)
+    this.modalRef = this.modalService.open(ModalComponent);
     this.modalRef.component.restaurante = restaurante;
-    console.log(this.listaRestaurantes,);
+    console.log(this.listaRestaurantes);
+  }
+
+  deleteRestaurante(id:number) {
+    this.restauranteService.deleteRestaurante(id).subscribe({
+      complete: () => console.log('Comunicacion completada'),
+      error: (errorRX) => {
+        console.log(errorRX);
+        alert('Error al eliminar');
+      },
+      next: () => {
+        alert('Se ha eliminado correctamente');
+        location.reload();
+      },
+    });
   }
 }
