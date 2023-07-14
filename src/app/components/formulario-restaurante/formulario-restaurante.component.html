@@ -235,9 +235,7 @@
       </div>
     </div>
   </div>
-
   <br />
-
   <br />
   <button
     type="submit"
@@ -246,4 +244,241 @@
   >
     CREAR
   </button>
+</form>
+
+<br />
+<!-- Aqui esta el fomulario para modificar -->
+
+<form
+  #formulario_restaurante="ngForm"
+  (ngSubmit)="modificarRestaurante(restauranteSeleccionado)"
+  class="formulario"
+>
+  <div>
+    <div class="form-group">
+      <label for="nombre">NombreAModificar</label>
+      <input
+        type="text"
+        #nombre="ngModel"
+        [(ngModel)]="restaurante.nombre"
+        class="form-control"
+        id="nombre"
+        name="nombre"
+        placeholder="Intro nombre"
+        required
+        pattern=".{4,15}"
+      />
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="direccion">Dirección</label>
+      <input
+        type="text"
+        #direccion="ngModel"
+        [(ngModel)]="restaurante.direccion"
+        class="form-control"
+        id="direccion"
+        name="direccion"
+        placeholder="Intro dirección"
+        required
+        pattern=".{4,15}"
+      />
+      <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+      <div
+        class="alert alert-danger"
+        [hidden]="direccion.pristine || direccion.valid"
+      >
+        Dirección obligatorio mínimo 4 letras máximo 15
+      </div>
+    </div>
+    <br />
+    <!-- TODO: MODIFICAR EL BARRIO CON UN DESPLEGABLE/SELECT -->
+    <div class="form-group">
+      <label for="barrio">Barrio</label>
+      <select
+        class="form-control"
+        title="listaBarrios"
+        name="nbarrio"
+        id="nbario"
+        [(ngModel)]="restaurante.barrio"
+      >
+        <option *ngFor="let barrio of barrios" value="{{ barrio }}">
+          {{ barrio }}
+        </option>
+      </select>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="web">Web</label>
+      <input
+        type="text"
+        #web="ngModel"
+        [(ngModel)]="restaurante.web"
+        class="form-control"
+        id="web"
+        name="web"
+        placeholder="Intro web"
+        required
+        pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
+      />
+      <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+      <div class="alert alert-danger" [hidden]="web.pristine || web.valid">
+        Web obligatorio
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="fichaGoogle">Ficha Google</label>
+      <input
+        type="text"
+        #fichaGoogle="ngModel"
+        [(ngModel)]="restaurante.fichaGoogle"
+        class="form-control"
+        id="fichaGoogle"
+        name="fichaGoogle"
+        placeholder="Intro fichaGoogle"
+        required
+        pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
+      />
+      <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+      <div
+        class="alert alert-danger"
+        [hidden]="fichaGoogle.pristine || fichaGoogle.valid"
+      >
+        FichaGoogle obligatorio
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="form-group">
+      <label for="latitud">Latitud</label>
+      <input
+        type="number"
+        #latitud="ngModel"
+        [(ngModel)]="restaurante.latitud"
+        class="form-control"
+        id="latitud"
+        name="latitud"
+        placeholder="Intro latitud"
+        required
+      />
+      <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+      <div
+        class="alert alert-danger"
+        [hidden]="latitud.pristine || latitud.valid"
+      >
+        latitud
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="longitud">Longitud</label>
+      <input
+        type="number"
+        #longitud="ngModel"
+        [(ngModel)]="restaurante.longitud"
+        class="form-control"
+        id="longitud"
+        name="longitud"
+        placeholder="Intro longitud"
+        required
+      />
+      <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+      <div
+        class="alert alert-danger"
+        [hidden]="longitud.pristine || longitud.valid"
+      >
+        longitud
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="precioMedio">Precio medio</label>
+      <input
+        type="number"
+        #precioMedio="ngModel"
+        [(ngModel)]="restaurante.precioMedio"
+        class="form-control"
+        id="precioMedio"
+        name="precioMedio"
+        placeholder="Intro precioMedio"
+        required
+        min="2"
+        max="500"
+      />
+      <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+      <div
+        class="alert alert-danger"
+        [hidden]="precioMedio.pristine || precioMedio.valid"
+      >
+        Precio medio
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="especialiadad1">Especialidad 1</label>
+      <input
+        type="text"
+        #especialiadad1="ngModel"
+        [(ngModel)]="restaurante.especialiadad1"
+        class="form-control"
+        id="especialiadad1"
+        name="especialidad1"
+        placeholder="Intro especialidad 1"
+        required
+      />
+      <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+      <div
+        class="alert alert-danger"
+        [hidden]="especialiadad1.pristine || especialiadad1.valid"
+      >
+        Especialidad 1
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="especialiadad2">Especialidad 2</label>
+      <input
+        type="text"
+        #especialiadad2="ngModel"
+        [(ngModel)]="restaurante.especialiadad2"
+        class="form-control"
+        id="especialiadad2"
+        name="especialiadad2"
+        placeholder="Intro especialidad 2"
+        required
+      />
+      <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+      <div
+        class="alert alert-danger"
+        [hidden]="especialiadad1.pristine || especialiadad1.valid"
+      >
+        Especialidad 2
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="especialiadad3">Especialidad 3</label>
+      <input
+        type="text"
+        #especialiadad3="ngModel"
+        [(ngModel)]="restaurante.especialiadad3"
+        class="form-control"
+        id="especialiadad3"
+        name="especialiadad3"
+        placeholder="Intro especialidad 3"
+        required
+      />
+      <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+      <div
+        class="alert alert-danger"
+        [hidden]="especialiadad1.pristine || especialiadad1.valid"
+      >
+        Especialidad 3
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button type="submit" class="btn btn-success">CREAR</button>
 </form>

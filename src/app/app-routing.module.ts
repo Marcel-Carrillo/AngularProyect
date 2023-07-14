@@ -18,7 +18,8 @@ const routes: Routes = [
   {path:"imc",component: ImcComponent},
   {path:"chuck-norris",component: ChuckNorrisComponent},
   {path:"restaurantes",component: RestaurantesComponent},
-  {path:"restaurante/nuevo",component: FormularioRestauranteComponent}
+  {path:"restaurante/nuevo",component: FormularioRestauranteComponent},
+  {path:"restaurante/amodificar",component: FormularioRestauranteComponent}
 
 ];
 

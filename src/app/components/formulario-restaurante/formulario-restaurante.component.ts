@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Restaurante } from 'src/app/models/restaurante';
 import { RestauranteService } from 'src/app/services/restaurante.service';
 
@@ -8,10 +9,16 @@ import { RestauranteService } from 'src/app/services/restaurante.service';
   styleUrls: ['./formulario-restaurante.component.css'],
 })
 export class FormularioRestauranteComponent implements OnInit {
+  @Input() restauranteSeleccionado!: Restaurante;
   restaurante: Restaurante;
   barrios: Array<String>;
+  
 
-  constructor(private restauranteService: RestauranteService) {
+  //Servicio rutas
+  constructor(
+    private restauranteService: RestauranteService,
+    private servicioRuta: Router
+  ) {
     this.restaurante = new Restaurante();
     this.barrios = [
       '---',
@@ -28,8 +35,13 @@ export class FormularioRestauranteComponent implements OnInit {
       'Teatinos-Universidad',
     ];
   }
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.restauranteSeleccionado);
+  }
+  //Aqui que es donde lo quiero no lo consigo traer....MAL!!!!
+  modificarRestaurante(restaurante: Restaurante) {
+  }
+  
   crearRestaurante() {
     this.restauranteService.postRestaurante(this.restaurante).subscribe({
       complete: () => console.log('Comunicacion completada'),
@@ -37,12 +49,10 @@ export class FormularioRestauranteComponent implements OnInit {
         console.error(errorRX);
         alert('Error al insertar');
       },
-      next: (restNuevo) => {
+      next: () => {
         alert('Restaurante insertado correctamente');
-        console.log('El restaurante nuevo tiene el id ' + restNuevo.id);
+        this.servicioRuta.navigateByUrl('/restaurantes');
       },
     });
   }
-
-  
 }
