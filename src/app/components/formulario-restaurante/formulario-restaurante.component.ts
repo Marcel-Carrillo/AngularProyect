@@ -18,32 +18,32 @@ export class FormularioRestauranteComponent implements OnInit {
   constructor(
     private restauranteService: RestauranteService,
     private servicioRuta: Router
-  ) {
-    this.restaurante = new Restaurante();
-    this.barrios = [
-      '---',
-      'Centro',
-      'Este',
-      'Ciudad Jardín',
-      'Bailén-Miraflores',
-      'Palma-Palmilla',
-      'Cruz de Humilladero',
-      'Carretera de Cádiz',
-      'Churriana',
-      'Campanillas',
-      'Puerto de la Torre',
-      'Teatinos-Universidad',
-    ];
-  }
-  ngOnInit(): void {
-    console.log(this.restauranteSeleccionado);
-  }
-  //Aqui que es donde lo quiero no lo consigo traer....MAL!!!!
-  modificarRestaurante(restaurante: Restaurante) {
-  }
-  
-  crearRestaurante() {
-    this.restauranteService.postRestaurante(this.restaurante).subscribe({
+    ) {
+      this.restaurante = new Restaurante();
+      this.barrios = [
+        '---',
+        'Centro',
+        'Este',
+        'Ciudad Jardín',
+        'Bailén-Miraflores',
+        'Palma-Palmilla',
+        'Cruz de Humilladero',
+        'Carretera de Cádiz',
+        'Churriana',
+        'Campanillas',
+        'Puerto de la Torre',
+        'Teatinos-Universidad',
+      ];
+    }
+    ngOnInit(): void {
+      console.log(this.restauranteSeleccionado,"1111111111111111111111111111");
+    }
+    //Aqui que es donde lo quiero no lo consigo traer....MAL!!!!
+    modificarRestaurante(restaurante: Restaurante) {
+    }
+    
+    crearRestaurante() {
+      this.restauranteService.postRestaurante(this.restaurante).subscribe({
       complete: () => console.log('Comunicacion completada'),
       error: (errorRX) => {
         console.error(errorRX);

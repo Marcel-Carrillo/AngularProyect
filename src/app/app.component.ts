@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Restaurante } from './models/restaurante';
 
 @Component({
   selector: 'app-root', //la etiqueta raiz o padre. ID del componente / hook , punto de anclaje
@@ -6,9 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'] //su css
 })
 export class AppComponent {
+  
   title = 'my-app'; 
+  restauranteSeleccionado!: Restaurante;
   //aqui va el javascript - la funcionalidad del componente
   constructor(){
-       
+  
   }
 }

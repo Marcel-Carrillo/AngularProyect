@@ -10,6 +10,9 @@ export class RestauranteService {
   static readonly URL_RESTAURANTES: string =
     'http://localhost:8081/restaurante';
 
+  static readonly URL_REST_PAGINAS: string = 
+  'http://localhost:8081/restaurante/paginas?page=0&size=2'
+
   cabeceras: HttpHeaders = new HttpHeaders({
     'Content-type': 'application/json',
   });
@@ -19,6 +22,12 @@ export class RestauranteService {
   getListaRestaurantes(): Observable<Array<Restaurante>> {
     return this.httpClient.get<Array<Restaurante>>(
       RestauranteService.URL_RESTAURANTES
+    );
+  }
+
+  getListaPorPagina(): Observable<Array<Restaurante>> {
+    return this.httpClient.get<Array<Restaurante>>(
+      RestauranteService.URL_REST_PAGINAS
     );
   }
 

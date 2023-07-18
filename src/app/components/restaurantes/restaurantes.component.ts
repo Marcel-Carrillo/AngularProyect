@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Restaurante } from 'src/app/models/restaurante';
 import { RestauranteService } from 'src/app/services/restaurante.service';
 import { ModalComponent } from '../modal/modal.component';
@@ -11,10 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./restaurantes.component.css'],
 })
 export class RestaurantesComponent implements OnInit {
+  @Input() restauranteSeleccionado!: Restaurante;
   listaRestaurantes!: Array<Restaurante>;
   modalRef: MdbModalRef<ModalComponent> | null = null;
-  restauranteSeleccionado!: Restaurante;
-  
 
   constructor(
     private restauranteService: RestauranteService,
@@ -38,6 +37,15 @@ export class RestaurantesComponent implements OnInit {
         this.listaRestaurantes = listaRestaurantesRx;
       },
     });
+    // this.restauranteService.getListaPorPagina().subscribe({
+    //   complete: () => console.log('Comunicacion completada'),
+    //   error: (errorRX) => {
+    //     console.error(errorRX);
+    //   },
+    //   next: (listaRestaurantesRx) => {
+    //     this.listaRestaurantes = listaRestaurantesRx},
+    // });
+
   }
 
   getRestaurantesTotales() {
@@ -53,6 +61,17 @@ export class RestaurantesComponent implements OnInit {
         );
         this.listaRestaurantes = listaRestaurantesRx;
       },
+    });
+  }
+
+  getRestaurantesPorPagina() {
+    this.restauranteService.getListaPorPagina().subscribe({
+      complete: () => console.log('Comunicacion completada'),
+      error: (errorRX) => {
+        console.error(errorRX);
+      },
+      next: (listaRestaurantesRx) => {
+        this.listaRestaurantes = listaRestaurantesRx},
     });
   }
 
