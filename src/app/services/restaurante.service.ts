@@ -56,11 +56,11 @@ export class RestauranteService {
     formData.append('web', restaurante.web);
     formData.append('fichaGoogle', restaurante.fichaGoogle);
     formData.append('latitud', restaurante.latitud + '');
-    formData.append('longuitud', restaurante.longitud + '');
-    formData.append('precio', restaurante.precioMedio + '');
-    formData.append('especialidad1', restaurante.especialiadad1);
-    formData.append('especialidad2', restaurante.especialiadad2);
-    formData.append('especialidad3', restaurante.especialiadad3);
+    formData.append('longitud', restaurante.longitud + '');
+    formData.append('precioMedio', restaurante.precioMedio + '');
+    formData.append('especialiadad1', restaurante.especialiadad1);
+    formData.append('especialiadad2', restaurante.especialiadad2);
+    formData.append('especialiadad3', restaurante.especialiadad3);
     formData.append('archivo', archivo);
 
     return this.httpClient.post<Restaurante>(RestauranteService.URL_RESTAURANTES + "/crear-con-foto", formData);

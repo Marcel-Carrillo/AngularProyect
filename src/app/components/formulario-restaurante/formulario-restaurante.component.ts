@@ -35,27 +35,42 @@ export class FormularioRestauranteComponent implements OnInit {
       'Puerto de la Torre',
       'Teatinos-Universidad',
     ];
-  }
+  };
   ngOnInit(): void {
     console.log(this.restauranteSeleccionado, "1111111111111111111111111111");
-  }
+  };
   //Aqui que es donde lo quiero no lo consigo traer....MAL!!!!
   modificarRestaurante(restaurante: Restaurante) {
-  }
+  };
 
   crearRestaurante() {
-    this.restauranteService.postRestaurante(this.restaurante).subscribe({
-      complete: () => console.log('Comunicacion completada'),
-      error: (errorRX) => {
-        console.error(errorRX);
-        alert('Error al insertar');
-      },
-      next: () => {
-        alert('Restaurante insertado correctamente');
-        this.servicioRuta.navigateByUrl('/restaurantes');
-      },
-    });
-  }
+    if(this.foto_seleccionada != null){
+      //el usuario llama a post con foto
+      this.restauranteService.postRestauranteConFoto(this.restaurante, this.foto_seleccionada).subscribe({
+        complete: () => console.log('Comunicacion completada'),
+        error: (errorRX) => {
+          console.error(errorRX);
+          alert('Error al insertar');
+        },
+        next: () => {
+          alert('Restaurante insertado correctamente');
+          this.servicioRuta.navigateByUrl('/restaurantes');
+        },
+      });
+    }else{
+      this.restauranteService.postRestaurante(this.restaurante).subscribe({
+        complete: () => console.log('Comunicacion completada'),
+        error: (errorRX) => {
+          console.error(errorRX);
+          alert('Error al insertar');
+        },
+        next: () => {
+          alert('Restaurante insertado correctamente');
+          this.servicioRuta.navigateByUrl('/restaurantes');
+        },
+      });
+    };
+  };
 
   seleccionarFoto(evento: Event) {
     console.log("foto cambiada");
@@ -72,7 +87,7 @@ export class FormularioRestauranteComponent implements OnInit {
         console.log("el usuario NO ha seleccionado una imagen");
         this.foto_seleccionada = null;
         //si no, la elimino, "no me la quedo"
-      }
-    }
-  }
-}
+      };
+    };
+  };
+};
