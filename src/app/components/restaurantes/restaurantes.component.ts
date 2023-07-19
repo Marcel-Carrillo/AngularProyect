@@ -20,7 +20,6 @@ export class RestaurantesComponent implements OnInit {
     private modalService: MdbModalService,
     private servicioRuta: Router
   ) {
-    
   }
 
   ngOnInit(): void {
@@ -71,7 +70,8 @@ export class RestaurantesComponent implements OnInit {
         console.error(errorRX);
       },
       next: (listaRestaurantesRx) => {
-        this.listaRestaurantes = listaRestaurantesRx},
+        this.listaRestaurantes = listaRestaurantesRx
+      },
     });
   }
 
