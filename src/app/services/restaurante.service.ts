@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Restaurante } from '../models/restaurante';
@@ -64,6 +64,13 @@ export class RestauranteService {
     formData.append('archivo', archivo);
 
     return this.httpClient.post<Restaurante>(RestauranteService.URL_RESTAURANTES + "/crear-con-foto", formData);
+  }
+
+
+  //GET a http://localhost:8081/restaurante/paginas?page=0&size=2
+  getPaginaRestaurantes(page:number, size:number):Observable<any>{
+    let parametros:HttpParams = new HttpParams().set('page', page).set('size', size)
+    return this.httpClient.get<any>(RestauranteService.URL_RESTAURANTES+"/paginas", {params:parametros})
   }
 
 }

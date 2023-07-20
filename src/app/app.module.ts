@@ -16,7 +16,9 @@ import { ModalComponent } from './components/modal/modal.component';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { FormularioRestauranteComponent } from './components/formulario-restaurante/formulario-restaurante.component';
-
+import { RestaurantesnpagComponent } from './components/restaurantesnpag/restaurantesnpag.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { FormularioRestauranteComponent } from './components/formulario-restaura
     ChuckNorrisComponent,
     RestaurantesComponent,
     ModalComponent,
-    FormularioRestauranteComponent
+    FormularioRestauranteComponent,
+    RestaurantesnpagComponent
       ],
   imports: [
     BrowserModule,
@@ -39,7 +42,9 @@ import { FormularioRestauranteComponent } from './components/formulario-restaura
     HttpClientModule,
     CdTimerModule,
     MdbCheckboxModule,
-    MdbModalModule
+    MdbModalModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

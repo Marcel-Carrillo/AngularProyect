@@ -8,6 +8,7 @@ import { ImcComponent } from './components/imc/imc.component';
 import { ChuckNorrisComponent } from './components/chuck-norris/chuck-norris.component';
 import { RestaurantesComponent } from './components/restaurantes/restaurantes.component';
 import { FormularioRestauranteComponent } from './components/formulario-restaurante/formulario-restaurante.component';
+import { RestaurantesnpagComponent } from './components/restaurantesnpag/restaurantesnpag.component';
 
 //En este array de rotas, tengo que tener una ruta path asociado al componente
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:"chuck-norris",component: ChuckNorrisComponent},
   {path:"restaurantes",component: RestaurantesComponent},
   {path:"restaurante/nuevo",component: FormularioRestauranteComponent},
-  {path:"restaurante/amodificar",component: FormularioRestauranteComponent}
+  {path:"restaurante/amodificar",component: FormularioRestauranteComponent},
+  {path:"restaurantesnpag",component: RestaurantesnpagComponent},
 
 ];
 
