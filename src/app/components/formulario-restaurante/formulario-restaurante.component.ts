@@ -1,15 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Restaurante } from 'src/app/models/restaurante';
 import { RestauranteService } from 'src/app/services/restaurante.service';
+import { RestaurantesComponent } from '../restaurantes/restaurantes.component';
 
 @Component({
   selector: 'app-formulario-restaurante',
   templateUrl: './formulario-restaurante.component.html',
   styleUrls: ['./formulario-restaurante.component.css'],
 })
-export class FormularioRestauranteComponent implements OnInit {
-  @Input() restauranteSeleccionado!: Restaurante;
+export class FormularioRestauranteComponent implements OnInit, AfterViewInit {
+  @ViewChild("restauranteSel") restauranteSel!: RestaurantesComponent;
   foto_seleccionada!: File | null; //union type
   restaurante: Restaurante;
   barrios: Array<String>;
@@ -35,12 +36,19 @@ export class FormularioRestauranteComponent implements OnInit {
       'Puerto de la Torre',
       'Teatinos-Universidad',
     ];
-  };
+  }ngAfterViewInit(): void {
+    console.log(this.restauranteSel,"after");
+    
+  }
+;
   ngOnInit(): void {
-    console.log(this.restauranteSeleccionado, "1111111111111111111111111111");
+    console.log(this.restauranteSel, "1111111111111111111111111111");
   };
+
+  
   //Aqui que es donde lo quiero no lo consigo traer....MAL!!!!
   modificarRestaurante(restaurante: Restaurante) {
+    
   };
 
   crearRestaurante() {

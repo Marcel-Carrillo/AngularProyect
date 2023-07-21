@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Restaurante } from '../models/restaurante';
 
@@ -13,9 +13,18 @@ export class RestauranteService {
   static readonly URL_REST_PAGINAS: string =
     'http://localhost:8081/restaurante/paginas?page=0&size=2'
 
+
+  static readonly URL_REST_BUSQUEDA: string =
+    'http://localhost:8081/restaurante/buscarPorClave';
+
+
+
+
   cabeceras: HttpHeaders = new HttpHeaders({
     'Content-type': 'application/json',
   });
+
+  @Input() terminoBusqueda!: HTMLElement;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -73,4 +82,12 @@ export class RestauranteService {
     return this.httpClient.get<any>(RestauranteService.URL_RESTAURANTES+"/paginas", {params:parametros})
   }
 
-}
+
+  getRestaurantesPorNombreBarrioEspecialidad(clave:string): Observable<Array<Restaurante>>{
+      return this.httpClient.get<Array<Restaurante>>(
+        RestauranteService.URL_REST_BUSQUEDA + "/" + clave
+      );
+    }
+  }
+
+
