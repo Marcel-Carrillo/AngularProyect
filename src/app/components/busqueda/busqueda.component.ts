@@ -77,4 +77,27 @@ export class BusquedaComponent implements OnInit {
   restauranteTocado(restaurante: Restaurante) {
     this.mapaHijo.dibujarPosicion(restaurante.latitud,restaurante.longitud);
   }
+
+  encuentrame(){
+    if(navigator.geolocation){
+      console.log("tenemos acceso al api geo");
+      navigator.geolocation.getCurrentPosition((pos)=>this.exito(pos),
+      ()=>this.fracaso());
+    }else{
+      console.log("no tenemos acceso al api geo");
+      
+    }
+  }
+
+  exito(posicion: GeolocationPosition){
+    console.log("Se ha encontrado su posicion");
+    console.log(`Latitud ${posicion.coords.latitude}` );
+    console.log(`Longitud ${posicion.coords.longitude}` );
+    this.mapaHijo.dibujarPosicion (posicion.coords.latitude,posicion.coords.longitude );
+    
+  }
+
+  fracaso(){
+    alert("No es posible determinar su ubicacion en este dispositivo");
+  }
 }

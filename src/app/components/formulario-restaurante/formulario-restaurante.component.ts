@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Restaurante } from 'src/app/models/restaurante';
 import { RestauranteService } from 'src/app/services/restaurante.service';
-import { RestaurantesComponent } from '../restaurantes/restaurantes.component';
 
 @Component({
   selector: 'app-formulario-restaurante',
@@ -10,10 +9,11 @@ import { RestaurantesComponent } from '../restaurantes/restaurantes.component';
   styleUrls: ['./formulario-restaurante.component.css'],
 })
 export class FormularioRestauranteComponent implements OnInit, AfterViewInit {
-  @ViewChild("restauranteSel") restauranteSel!: RestaurantesComponent;
   foto_seleccionada!: File | null; //union type
   restaurante: Restaurante;
   barrios: Array<String>;
+  restauranteSel! : Restaurante;
+  formulario! : Boolean;
 
 
   //Servicio rutas
@@ -37,19 +37,53 @@ export class FormularioRestauranteComponent implements OnInit, AfterViewInit {
       'Teatinos-Universidad',
     ];
   }ngAfterViewInit(): void {
-    console.log(this.restauranteSel,"after");
     
   }
 ;
   ngOnInit(): void {
-    console.log(this.restauranteSel, "1111111111111111111111111111");
+    let restauranteString : any = localStorage.getItem('restauranteSel');
+    this.restauranteSel = JSON.parse(restauranteString);
+    let formularioString : any = sessionStorage.getItem('formulario');
+    this.formulario = JSON.parse(formularioString);
   };
 
   
   //Aqui que es donde lo quiero no lo consigo traer....MAL!!!!
   modificarRestaurante(restaurante: Restaurante) {
-    
-  };
+    if (this.restauranteSel) {
+      // Aquí asumimos que ya tienes el restaurante seleccionado para modificar en la variable restauranteSel
+  
+      // Asigna los valores modificados de restauranteSel al objeto restaurante
+      this.restaurante.nombre = this.restauranteSel.nombre;
+      this.restaurante.direccion = this.restauranteSel.direccion;
+      this.restaurante.barrio = this.restauranteSel.barrio;
+      this.restaurante.web = this.restauranteSel.web;
+      this.restaurante.fichaGoogle = this.restauranteSel.fichaGoogle;
+      this.restaurante.latitud = this.restauranteSel.latitud;
+      this.restaurante.longitud = this.restauranteSel.longitud;
+      this.restaurante.precioMedio = this.restauranteSel.precioMedio;
+      this.restaurante.especialiadad1 = this.restauranteSel.especialiadad1;
+      this.restaurante.especialiadad2 = this.restauranteSel.especialiadad2;
+      this.restaurante.especialiadad3 = this.restauranteSel.especialiadad3;
+  
+      // Luego, puedes llamar a tu servicio para enviar la solicitud PUT con los datos actualizados del restaurante
+      this.restauranteService.putRestaurante(this.restaurante, this.restauranteSel.id).subscribe({
+        complete: () => console.log('Comunicación completada'),
+        error: (error) => {
+          console.error(error);
+          alert('Error al modificar el restaurante');
+        },
+        next: () => {
+          alert('Restaurante modificado correctamente');
+          this.servicioRuta.navigateByUrl('/restaurantes');
+        },
+      });
+    } else {
+      // Manejo de error si no se ha seleccionado ningún restaurante para modificar
+      console.error('Error: No se ha seleccionado un restaurante para modificar');
+      alert('Error: No se ha seleccionado un restaurante para modificar');
+    }
+  }
 
   crearRestaurante() {
     if(this.foto_seleccionada != null){

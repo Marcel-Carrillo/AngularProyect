@@ -55,4 +55,6 @@ export class MapaComponent implements OnInit {
       radius: 50
   }).addTo(this.map);
   }
+
+
 }

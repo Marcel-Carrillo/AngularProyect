@@ -11,15 +11,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./restaurantes.component.css'],
 })
 export class RestaurantesComponent implements OnInit {
-  @Input() restauranteSeleccionado!: Restaurante;
   listaRestaurantes!: Array<Restaurante>;
   modalRef: MdbModalRef<ModalComponent> | null = null;
+  restauranteSeleccionado! : Restaurante;
+  formulario: Boolean;
 
   constructor(
     private restauranteService: RestauranteService,
     private modalService: MdbModalService,
     private servicioRuta: Router
   ) {
+    this.formulario = false;
   }
 
   ngOnInit(): void {
@@ -97,8 +99,20 @@ export class RestaurantesComponent implements OnInit {
   }
   //Aqui tengo el restauranteSeleccionado BIENN!!!!
   modificarRestaurante(restaurante: Restaurante) {
+    this.formulario = true;
+    let formu = JSON.stringify(this.formulario)
+    sessionStorage.setItem('formulario', formu)
     this.restauranteSeleccionado = restaurante;
     this.servicioRuta.navigateByUrl('/restaurante/amodificar');
     console.log(this.restauranteSeleccionado);
-  }
+    let restlocal = JSON.stringify(this.restauranteSeleccionado);
+    localStorage.setItem('restauranteSel',restlocal);
+      }
+
+     cambiarFormulario(){
+      this.formulario = false
+      let formu = JSON.stringify(this.formulario)
+      sessionStorage.setItem('formulario', formu)
+      this.servicioRuta.navigateByUrl('/restaurante/nuevo');
+     } 
 }

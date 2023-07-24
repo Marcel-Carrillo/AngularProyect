@@ -88,6 +88,16 @@ export class RestauranteService {
         RestauranteService.URL_REST_BUSQUEDA + "/" + clave
       );
     }
+
+
+    putRestaurante(restaurante: Restaurante, id: number): Observable<Restaurante> {
+      return this.httpClient.put<Restaurante>(
+        `${RestauranteService.URL_RESTAURANTES}/${id}`, restaurante,
+        {
+          headers: this.cabeceras,
+        }
+      );
+    }
   }
 
 
