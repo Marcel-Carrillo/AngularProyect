@@ -30,9 +30,9 @@ export class RestauranteService {
     static readonly URL_REST_BUSQUEDA: string =
     'http://localhost:8081/restaurante/buscarPorClave';
     
-    static readonly URL_RESTAURANTES_ACTUAL: string = RestauranteService.URL_RESTAURANTES;
-    static readonly URL_RESTAURANTES_PAGINAS_ACTUAL: string = RestauranteService.URL_REST_PAGINAS;
-    static readonly URL_RESTAURANTES_BUSQUEDA_ACTUAL: string = RestauranteService.URL_REST_BUSQUEDA;
+    static readonly URL_RESTAURANTES_ACTUAL: string = RestauranteService.URL_RESTAURANTES_PRODUCCION;
+    static readonly URL_RESTAURANTES_PAGINAS_ACTUAL: string = RestauranteService.URL_REST_PAGINAS_PRODUCCION;
+    static readonly URL_RESTAURANTES_BUSQUEDA_ACTUAL: string = RestauranteService.URL_REST_BUSQUEDA_PRODUCCION;
     
 
 
