@@ -6,7 +6,7 @@
       <div class="card-body">
         <img src="" alt="" class="imagen">
         <img *ngIf="restaux.fotoHashCode" src="{{ruta_servicio_foto}}/{{restaux.id}}" class="card_img" alt="...">
-        <img *ngIf="!restaux.fotoHashCode" src="../assets/imgrest.jpg" alt="" class="imagen">
+        <img *ngIf="!restaux.fotoHashCode" src="assets/imgrest.jpg" alt="" class="imagen">
         <h5 class="card-title">{{restaux.nombre}}</h5>
         <p class="card-text">Especialidades:
           {{restaux.especialiadad1}}-{{restaux.especialiadad2}}-{{restaux.especialiadad3}}</p>
