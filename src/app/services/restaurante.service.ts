@@ -14,6 +14,10 @@ export class RestauranteService {
     //busqueda.component.ts
     //restaurantesnpag.component.ts
 
+  static readonly URL_RESTAURANTES_ACTUAL: string = 'http://localhost:8081/restaurante';
+  static readonly URL_RESTAURANTES_PAGINAS_ACTUAL: string = 'http://localhost:8081/restaurante/paginas?page=0&size=2';
+  static readonly URL_RESTAURANTES_BUSQUEDA_ACTUAL: string = 'http://localhost:8081/restaurante/buscarPorClave';
+
   static readonly URL_RESTAURANTES: string =
     'http://localhost:8081/restaurante';
 
@@ -42,19 +46,19 @@ export class RestauranteService {
 
   getListaRestaurantes(): Observable<Array<Restaurante>> {
     return this.httpClient.get<Array<Restaurante>>(
-      RestauranteService.URL_RESTAURANTES_PRODUCCION
+      RestauranteService.URL_RESTAURANTES_ACTUAL
     );
   }
 
   getListaPorPagina(): Observable<Array<Restaurante>> {
     return this.httpClient.get<Array<Restaurante>>(
-      RestauranteService.URL_REST_PAGINAS_PRODUCCION
+      RestauranteService.URL_RESTAURANTES_PAGINAS_ACTUAL
     );
   }
 
   postRestaurante(restaurante: Restaurante): Observable<Restaurante> {
     return this.httpClient.post<Restaurante>(
-      RestauranteService.URL_RESTAURANTES_PRODUCCION,
+      RestauranteService.URL_RESTAURANTES_ACTUAL,
       restaurante,
       {
         headers: this.cabeceras,
@@ -64,7 +68,7 @@ export class RestauranteService {
 
   deleteRestaurante(id: number) {
     return this.httpClient.delete<Restaurante>(
-      RestauranteService.URL_RESTAURANTES_PRODUCCION + "/" + id)
+      RestauranteService.URL_RESTAURANTES_ACTUAL + "/" + id)
   }
 
   postRestauranteConFoto(restaurante: Restaurante, archivo: File): Observable<Restaurante> {
@@ -84,27 +88,27 @@ export class RestauranteService {
     formData.append('especialiadad3', restaurante.especialiadad3);
     formData.append('archivo', archivo);
 
-    return this.httpClient.post<Restaurante>(RestauranteService.URL_RESTAURANTES_PRODUCCION + "/crear-con-foto", formData);
+    return this.httpClient.post<Restaurante>(RestauranteService.URL_RESTAURANTES_ACTUAL + "/crear-con-foto", formData);
   }
 
 
   //GET a http://localhost:8081/restaurante/paginas?page=0&size=2
   getPaginaRestaurantes(page: number, size: number): Observable<any> {
     let parametros: HttpParams = new HttpParams().set('page', page).set('size', size)
-    return this.httpClient.get<any>(RestauranteService.URL_RESTAURANTES_PRODUCCION + "/paginas", { params: parametros })
+    return this.httpClient.get<any>(RestauranteService.URL_RESTAURANTES_ACTUAL + "/paginas", { params: parametros })
   }
 
 
   getRestaurantesPorNombreBarrioEspecialidad(clave: string): Observable<Array<Restaurante>> {
     return this.httpClient.get<Array<Restaurante>>(
-      RestauranteService.URL_REST_BUSQUEDA_PRODUCCION + "/" + clave
+      RestauranteService.URL_RESTAURANTES_BUSQUEDA_ACTUAL + "/" + clave
     );
   }
 
 
   putRestaurante(restaurante: Restaurante, id: number): Observable<Restaurante> {
     return this.httpClient.put<Restaurante>(
-      `${RestauranteService.URL_RESTAURANTES_PRODUCCION}/${id}`, restaurante,
+      `${RestauranteService.URL_RESTAURANTES_ACTUAL}/${id}`, restaurante,
       {
         headers: this.cabeceras,
       }

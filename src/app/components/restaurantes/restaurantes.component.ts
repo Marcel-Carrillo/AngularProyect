@@ -15,7 +15,7 @@ export class RestaurantesComponent implements OnInit {
   modalRef: MdbModalRef<ModalComponent> | null = null;
   restauranteSeleccionado! : Restaurante;
   formulario: Boolean;
-  ruta_servicio_foto: string = RestauranteService.URL_RESTAURANTES_PRODUCCION+"/obtenerfoto";
+  ruta_servicio_foto: string = RestauranteService.URL_RESTAURANTES_ACTUAL+"/obtenerfoto";
 
   constructor(
     private restauranteService: RestauranteService,

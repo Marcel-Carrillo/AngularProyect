@@ -15,7 +15,7 @@ export class BusquedaComponent implements OnInit {
   @Input() listaRestaurantes!: Array<Restaurante>;
   @Input() restauranteSeleccionado!: Restaurante;
   modalRef: MdbModalRef<ModalComponent> | null = null;
-  ruta_servicio_foto: string = RestauranteService.URL_RESTAURANTES_PRODUCCION+"/obtenerfoto";
+  ruta_servicio_foto: string = RestauranteService.URL_RESTAURANTES_ACTUAL+"/obtenerfoto";
 
   //ElementRef es el tipo generico de Angular para referirnos 
   //a una etiqueta estandar de HTML
