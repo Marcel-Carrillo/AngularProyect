@@ -14,26 +14,26 @@ export class RestauranteService {
     //busqueda.component.ts
     //restaurantesnpag.component.ts
 
-  static readonly URL_RESTAURANTES_ACTUAL: string = 'http://localhost:8081/restaurante';
-  static readonly URL_RESTAURANTES_PAGINAS_ACTUAL: string = 'http://localhost:8081/restaurante/paginas?page=0&size=2';
-  static readonly URL_RESTAURANTES_BUSQUEDA_ACTUAL: string = 'http://localhost:8081/restaurante/buscarPorClave';
-
-  static readonly URL_RESTAURANTES: string =
+    
+    static readonly URL_RESTAURANTES: string =
     'http://localhost:8081/restaurante';
-
-  static readonly URL_REST_PAGINAS_PRODUCCION: string =
+    
+    static readonly URL_REST_PAGINAS_PRODUCCION: string =
     'restaurante/paginas?page=0&size=2'
-
-  static readonly URL_REST_PAGINAS: string =
+    
+    static readonly URL_REST_PAGINAS: string =
     'http://localhost:8081/restaurante/paginas?page=0&size=2'
-
-  static readonly URL_REST_BUSQUEDA_PRODUCCION: string =
+    
+    static readonly URL_REST_BUSQUEDA_PRODUCCION: string =
     'restaurante/buscarPorClave';
-
-  static readonly URL_REST_BUSQUEDA: string =
+    
+    static readonly URL_REST_BUSQUEDA: string =
     'http://localhost:8081/restaurante/buscarPorClave';
-
-
+    
+    static readonly URL_RESTAURANTES_ACTUAL: string = RestauranteService.URL_RESTAURANTES;
+    static readonly URL_RESTAURANTES_PAGINAS_ACTUAL: string = RestauranteService.URL_REST_PAGINAS;
+    static readonly URL_RESTAURANTES_BUSQUEDA_ACTUAL: string = RestauranteService.URL_REST_BUSQUEDA;
+    
 
 
   cabeceras: HttpHeaders = new HttpHeaders({
