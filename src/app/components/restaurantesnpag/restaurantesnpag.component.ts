@@ -19,6 +19,7 @@ export class RestaurantesnpagComponent implements OnInit {
   totalPorPagina: number = 2;
   opcionesTamanio: number[] = [2, 4, 6, 8];
   paginaActual: number = 0;
+  ruta_servicio_foto: string = RestauranteService.URL_RESTAURANTES_PRODUCCION+"/obtenerfoto";
 
 
   constructor(private restauranteService: RestauranteService,
