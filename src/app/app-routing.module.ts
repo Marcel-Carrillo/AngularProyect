@@ -24,7 +24,7 @@ const routes: Routes = [
   {path:"restaurante/amodificar",component: FormularioRestauranteComponent},
   {path:"restaurantesnpag",component: RestaurantesnpagComponent},
   {path:"busqueda",component: BusquedaComponent},
-
+  {path: "**", redirectTo: "restaurantes", pathMatch: "full"}
 ];
 
 @NgModule({
