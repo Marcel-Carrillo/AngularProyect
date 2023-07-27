@@ -24,11 +24,28 @@ const routes: Routes = [
   {path:"restaurante/amodificar",component: FormularioRestauranteComponent},
   {path:"restaurantesnpag",component: RestaurantesnpagComponent},
   {path:"busqueda",component: BusquedaComponent},
-  {path: "**", redirectTo: "restaurantes", pathMatch: "full"}
+  {path: "**", redirectTo: "/"}
+];
+
+/*
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  // Tus rutas aquí
+  // ...
+  { path: '**', redirectTo: '/' } // Redirige todas las rutas no mapeadas a la página principal
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: false })],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+*/
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes, {useHash: false})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
